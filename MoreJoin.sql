@@ -3,8 +3,8 @@
 #1.List the films where the yr is 1962 [Show id, title] 
 
 SELECT id, title
- FROM movie
- WHERE yr=1962
+FROM movie
+WHERE yr=1962
 
 #2.Give year of 'Citizen Kane'. 
 
@@ -12,8 +12,7 @@ select yr
 from movie
 where title='Citizen Kane'
 
-#3.List all of the Star Trek movies, include the id, title and yr 
-(all of these movies include the words Star Trek in the title). Order results by year. 
+#3.List all of the Star Trek movies, include the id, title and yr (all of these movies include the words Star Trek in the title). Order results by year. 
 
 select id,title,yr
 from movie
@@ -69,8 +68,7 @@ from (movie join casting on movie.id=casting.movieid)
 	join actor on actor.id=casting.actorid
 where movie.yr=1962 and casting.ord=1
 
-#12.Which were the busiest years for 'John Travolta', show the year and the number of movies 
-he made each year for any year in which he made more than 2 movies.
+#12.Which were the busiest years for 'John Travolta', show the year and the number of movies he made each year for any year in which he made more than 2 movies.
 
 select yr,count(title) 
 from movie join casting on movie.id=movieid
