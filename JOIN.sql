@@ -76,17 +76,10 @@ group by matchid,mdate
 
 #13.List every match with the goals scored by each team as shown
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select mdate,team1,
+sum(case when teamid=team1 then 1 else 0 end) as score1,
+team2,
+sum(case when teamid=team2 then 1 else 0 end) as score2
+from game left join goal on matchid=id
+group by id
+order by mdate,matchid,team1,team2
