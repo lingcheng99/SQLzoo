@@ -51,4 +51,20 @@ select w1.continent,w1.name
 from world w1
 where w1.name<=all(select w2.name from world w2 where w1.continent=w2.continent)
 
+#9.Find the continents where all countries have a population <= 25000000. Then find the names of the countries associated with these continents. Show name, continent and population. 
 
+select name,continent,population
+from world
+where continent in(
+select continent
+from world
+group by continent
+having max(population)<=25000000)
+
+#10.Some countries have populations more than three times that of any of their neighbours (in the same continent). Give the countries and continents.
+
+select w1.name,w1.continent
+from world w1
+where w1.population>=(
+select 3*max(w2.population) from world w2 
+where w1.continent=w2.continent and w1.name<>w2.name)
